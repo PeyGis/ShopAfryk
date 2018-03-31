@@ -65,7 +65,7 @@
 
 	<div class="tab-pane  active" id="blockView">
 		<ul class="thumbnails">
-			<?php displayProductsGridView(); ?>
+			<?php displayProductsGridView(2); ?>
 		  </ul>
 	<hr class="soft"/>
 	</div>

@@ -210,13 +210,20 @@ function displayProductsListView(){
     }
 }
 
-function displayProductsGridView(){
+function displayProductsGridView($which_ui){
     $prod_obj = new ProductClass();
     $products = $prod_obj->getProducts();
     if($products){
         while ($product = $prod_obj->fetch()) {
+            if($which_ui == 1){
+                $prod_image = substr($product["product_image"], 1);
+                $viewPage = './view/product_details';
+
+            } else{
+                $prod_image = $product["product_image"];
+                $viewPage = "product_details";
+            }
             $prod_id = $product["product_id"];
-            $prod_image = $product["product_image"];
             $prod_title = $product["product_title"];
             $prod_price = $product["product_price"];
             $prod_desc = $product["product_desc"];
@@ -226,7 +233,7 @@ function displayProductsGridView(){
             <li class="span3">
               <div class="thumbnail">
                 <a href="product_details.php">
-                <img src="'.$prod_image.'" alt="'.$prod_title.'" class="img-responsive" style="height: 200px"/>
+                <img src="'.$prod_image.'" alt="'.$prod_title.'" class="img-responsive" style="height: 160px"/>
                 </a>
                 <div class="caption">
                   <h5>'.$prod_title.'</h5>
@@ -234,7 +241,7 @@ function displayProductsGridView(){
                     '.substr($prod_desc, 0, 70).'
                   </p>
                    <h4 style="text-align:center">
-                   <a class="btn" href="product_details.php"> 
+                   <a class="btn" href="'.$viewPage.'.php"> 
                    <i class="icon-zoom-in"></i>
                    </a> 
                    <a class="btn" href="#">Add to 
