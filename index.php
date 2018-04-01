@@ -63,30 +63,77 @@
 	 <li class=""><a href="view/normal.php">Delivery</a></li>
 	 <li class=""><a href="view/contact.php">view/contact</a></li>
 	 <li class="">
-	 <a href="#view/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">view/login</span></a>
-	<div id="view/login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="view/login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>view/login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal view/loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	 <a href="#view/login" role="button" data-toggle="modal" data-target="#loginModal" style="padding-right:0"><span class="btn btn-large btn-success">view/login</span></a>
+	
+	<div id="loginModal" class="modal fade" role="dialog">  
+      <div class="modal-dialog">  
+   <!-- Modal content-->  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Login </h4>  
+                </div>  
+                <div class="modal-body">  
+                     <label>Username</label>  
+                     <input type="text" name="username" id="username" class="form-control" />  
+                     <br />  
+                     <label>Password</label>  
+                     <input type="password" name="password" id="password" class="form-control" />  
+                     <br />  
+                     <button type="button" name="login_button" id="login_button" class="btn btn-success">Login</button>  
+                </div>
+                <div class="modal-footer">
+        <button type="button" name="age" id="age"  data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success" data-dismiss="modal">New User</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+           </div>  
+      </div>  
+ </div>  
+ <script>  
+ $(document).ready(function(){  
+      $('#login_button').click(function(){  
+           var username = $('#username').val();  
+           var password = $('#password').val();  
+           if(username != '' && password != '')  
+           {  
+                $.ajax({  
+                     url:"action.php",  
+                     method:"POST",  
+                     data: {username:username, password:password},  
+                     success:function(data)  
+                     {  
+                          //alert(data);  
+                          if(data == 'No')  
+                          {  
+                               alert("Wrong Data");  
+                          }  
+                          else  
+                          {  
+                               $('#loginModal').hide();  
+                               location.reload();  
+                          }  
+                     }  
+                });  
+           }  
+           else  
+           {  
+                alert("Both Fields are required");  
+           }  
+      });  
+      $('#logout').click(function(){  
+           var action = "logout";  
+           $.ajax({  
+                url:"action.php",  
+                method:"POST",  
+                data:{action:action},  
+                success:function()  
+                {  
+                     location.reload();  
+                }  
+           });  
+      });  
+ });  
+ </script>   
 	</li>
     </ul>
   </div>
