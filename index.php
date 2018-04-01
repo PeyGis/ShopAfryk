@@ -83,57 +83,13 @@
                      <button type="button" name="login_button" id="login_button" class="btn btn-success">Login</button>  
                 </div>
                 <div class="modal-footer">
-        <button type="button" name="age" id="age"  data-toggle="modal" data-target="#add_data_Modal" class="btn btn-success" data-dismiss="modal">New User</button>
+        <button  name="age" id="age" href="register.php" class="btn btn-success" data-dismiss="modal">New User</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
            </div>  
       </div>  
- </div>  
- <script>  
- $(document).ready(function(){  
-      $('#login_button').click(function(){  
-           var username = $('#username').val();  
-           var password = $('#password').val();  
-           if(username != '' && password != '')  
-           {  
-                $.ajax({  
-                     url:"action.php",  
-                     method:"POST",  
-                     data: {username:username, password:password},  
-                     success:function(data)  
-                     {  
-                          //alert(data);  
-                          if(data == 'No')  
-                          {  
-                               alert("Wrong Data");  
-                          }  
-                          else  
-                          {  
-                               $('#loginModal').hide();  
-                               location.reload();  
-                          }  
-                     }  
-                });  
-           }  
-           else  
-           {  
-                alert("Both Fields are required");  
-           }  
-      });  
-      $('#logout').click(function(){  
-           var action = "logout";  
-           $.ajax({  
-                url:"action.php",  
-                method:"POST",  
-                data:{action:action},  
-                success:function()  
-                {  
-                     location.reload();  
-                }  
-           });  
-      });  
- });  
- </script>   
+ </div> 
+ <script src="bootstrap/js/login.js"></script> 
 	</li>
     </ul>
   </div>

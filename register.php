@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -191,7 +191,7 @@
 		<strong>Lorem Ipsum is simply</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
 	 </div> -->
 	 
-	<form action="../controller/register.php" method="post" name="myForm" onsubmit="return validate();" > 
+	<form action="controller/register.php" method="post" name="myForm" onsubmit="return validate();" > 
                   <br />
                   <label>Your Name</label>  
                   <input type="text" name="name" id="name" placeholder="Full name" class="form-control" />  
@@ -230,7 +230,7 @@
                 </form>  
            </div>  
       </body> 
-        <script src="../bootstrap/js/script.js"></script>
+        <script src="bootstrap/js/script.js"></script>
 </div>
 
 </div>
