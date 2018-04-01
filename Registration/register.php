@@ -14,18 +14,21 @@
                   <br />
                   <label>Name</label>  
                   <input type="text" name="name" id="name" placeholder="Full name" class="form-control" />  
+                  <br/>
                   <span id="name_error" class="text-danger"></span>  
                   <br />   
                   <label>Email address</label>
                   <input type="email" class="form-control" id="email"  name="email" aria-describedby="emailHelp" placeholder="Enter email">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   <br/>
-                  <span id="email_error" class="text-danger"></span>  
+                  <span id="email_error" class="text-danger"></span>
+                  <br/>  
                   <label>Password</label>
                   <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                   <br/>
                   <label>Confirm Password</label>
                   <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Password">
+                  <br/>
                   <span id="password_error" class="text-danger"></span>  
                   <br/>
                   <label>Select Gender</label>
@@ -36,10 +39,13 @@
                   <br />  
                   <label>Date of Birth</label>
                   <input type="date" name="dob" id="dob" class="form-control" />
+                  <br/>
                   <span id="dob_error" class="text-danger"></span>  
                   <br />
-                  <input type="submit" value="Register" class="btn btn-success"/>  
+                  <input type="submit" value="Register" class="btn btn-success"/> 
+                  <br/>
                   <span id="success_message" class="text-success"></span>  
+                  <br/>
                 </form>  
            </div>  
       </body> 
