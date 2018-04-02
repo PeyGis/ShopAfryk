@@ -15,7 +15,7 @@
                      VALUES ('".$name."','".$email."', '".$password."', '".$dob."', '".$gender."')";  
       if(mysqli_query($connect, $sql))  
       {  
-           echo "Message Saved";  
+           echo "index.php";  
       }
  }  
  ?>  
