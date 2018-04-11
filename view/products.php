@@ -32,7 +32,14 @@
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
+<<<<<<< HEAD
+<?php 
+include_once('../layout.php')
+?>
+<!-- Sidebar end=============================================== -->
+=======
 	<?php require_once('../layout/sidebar.php');  ?>
+>>>>>>> f36a26d62c94803670a26eab479cc311dfa8d731
 	<div class="span9">
     <ul class="breadcrumb">
 		<li><a href="../index.php">Home</a> <span class="divider">/</span></li>

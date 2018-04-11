@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -62,30 +63,33 @@
 	 <li class=""><a href="view/normal.php">Delivery</a></li>
 	 <li class=""><a href="view/contact.php">view/contact</a></li>
 	 <li class="">
-	 <a href="#view/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">view/login</span></a>
-	<div id="view/login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="view/login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>view/login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal view/loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	 <a href="#view/login" role="button" data-toggle="modal" data-target="#loginModal" style="padding-right:0"><span class="btn btn-large btn-success">view/login</span></a>
+	
+	<div id="loginModal" class="modal fade" role="dialog">  
+      <div class="modal-dialog">  
+   <!-- Modal content-->  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Login </h4>  
+                </div>  
+                <div class="modal-body">  
+                     <label>Username</label>  
+                     <input type="text" name="username" id="username" class="form-control" />  
+                     <br />  
+                     <label>Password</label>  
+                     <input type="password" name="password" id="password" class="form-control" />  
+                     <br />  
+                     <button type="button" name="login_button" id="login_button" class="btn btn-success">Login</button>  
+                </div>
+                <div class="modal-footer">
+        <button  name="age" id="age" href="register.php" class="btn btn-success" data-dismiss="modal">New User</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+           </div>  
+      </div>  
+ </div> 
+ <script src="bootstrap/js/login.js"></script> 
 	</li>
     </ul>
   </div>
@@ -161,66 +165,9 @@
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
-	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
-		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-			<li class="subMenu open"><a> ELECTRONICS [230]</a>
-				<ul>
-				<li><a class="active" href="view/products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
-				</ul>
-			</li>
-			<li class="subMenu"><a> CLOTHES [840] </a>
-			<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
-			</ul>
-			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
-				<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
-			</ul>
-			</li>
-			<li><a href="view/products.php">HEALTH & BEAUTY [18]</a></li>
-			<li><a href="view/products.php">SPORTS & LEISURE [58]</a></li>
-			<li><a href="view/products.php">BOOKS & ENTERTAINMENTS [14]</a></li>
-		</ul>
-		<br/>
-		  <div class="thumbnail">
-			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
-			<div class="caption">
-			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="view/product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-			</div>
-		  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-				<div class="caption">
-				  <h5>Kindle</h5>
-				    <h4 style="text-align:center"><a class="btn" href="view/product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-				</div>
-			  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
-				<div class="caption">
-				  <h5>Payment Methods</h5>
-				</div>
-			  </div>
-	</div>
+<?php 
+include_once('layout.php')
+?>
 <!-- Sidebar end=============================================== -->
 		<div class="span9">		
 			<div class="well well-small">
