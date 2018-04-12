@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2018 at 03:03 PM
+-- Generation Time: Apr 01, 2018 at 11:34 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -132,8 +132,7 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_t
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
   `gender` enum('Male','Female') NOT NULL,
   `date_of_birth` date NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -207,7 +206,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --

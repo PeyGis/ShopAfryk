@@ -12,6 +12,11 @@ class ProductClass extends Dbconnection
 		$sql = 'SELECT * FROM products ORDER BY RAND()';
 		return $this->query($sql);
 	}
+
+	function getFeaturedProducts(){
+		$sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 4';
+		return $this->query($sql);
+	}
 	
 	function getProductById($prod_id){
 		$sql = "SELECT * FROM products WHERE product_id = '$prod_id'";

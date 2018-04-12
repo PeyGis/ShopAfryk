@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,7 +15,7 @@
 	<link href="themes/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 	<link href="themes/css/font-awesome.css" rel="stylesheet" type="text/css">
 <!-- Google-code-prettify -->	
-	<link href="themes/js/google-code-prettify/prettify.css" rel="stylesheet"/>
+	<link href="js/google-code-prettify/prettify.css" rel="stylesheet"/>
 <!-- fav and touch icons -->
     <link rel="shortcut icon" href="themes/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="themes/images/ico/apple-touch-icon-144-precomposed.png">
@@ -24,15 +25,16 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('./controller/productcontroller.php');  ?>
+	<?php require_once('./controller/productcontroller.php'); 
+		require_once('./controller/shoppingCartController.php');  ?>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
 	<div class="span6">Welcome!<strong> Our Estimed Customer</strong></div>
 	<div class="span6">
 	<div class="pull-right">
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<span class="btn btn-mini">$ <?php echo getTotalItemAmountInCart(); ?></span>
+		<a href="view/product_summary.php"><span class="btn btn-mini btn-warning"><i class="icon-shopping-cart icon-white"></i> [<?php echo getTotalItemsInCart(); ?> ] Items in your cart </span> </a> 
 	</div>
 	</div>
 </div>
@@ -55,37 +57,39 @@
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
 		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="special_offer.php">Specials Offer</a></li>
 	 <li class=""><a href="view/normal.php">Delivery</a></li>
-	 <li class=""><a href="view/contact.php">view/contact</a></li>
+	 <li class=""><a href="view/contact.php">Contact</a></li>
 	 <li class="">
-	 <a href="#view/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">view/login</span></a>
-	<div id="view/login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="view/login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>view/login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal view/loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	 <a href="#view/login" role="button" data-toggle="modal" data-target="#loginModal" style="padding-right:0"><span class="btn btn-large btn-info">Login</span></a>
+	
+	<div id="loginModal" class="modal fade" role="dialog">  
+      <div class="modal-dialog">  
+   <!-- Modal content-->  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Login </h4>  
+                </div>  
+                <div class="modal-body">  
+                     <label>Username</label>  
+                     <input type="text" name="username" id="username" class="form-control" />  
+                     <br />  
+                     <label>Password</label>  
+                     <input type="password" name="password" id="password" class="form-control" />  
+                     <br />  
+                     <button type="button" name="login_button" id="login_button" class="btn btn-success">Login</button>  
+                </div>
+                <div class="modal-footer">
+        <button  name="age" id="age" href="register.php" class="btn btn-success" data-dismiss="modal">New User</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+           </div>  
+      </div>  
+ </div> 
 	</li>
     </ul>
   </div>
@@ -161,8 +165,9 @@
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
+<!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="view/product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> ELECTRONICS [230]</a>
 				<ul>
@@ -177,10 +182,7 @@
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Shoes (6)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Clothing (5)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Shoes (3)</a></li>												
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>											
 			</ul>
 			</li>
 			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
@@ -188,11 +190,7 @@
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>BIB Wine (Bag in Box) (8)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Other Liquors & Wine (5)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Garden (3)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Khao Shong (11)</a></li>												
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>																							
 			</ul>
 			</li>
 			<li><a href="view/products.php">HEALTH & BEAUTY [18]</a></li>
@@ -200,20 +198,7 @@
 			<li><a href="view/products.php">BOOKS & ENTERTAINMENTS [14]</a></li>
 		</ul>
 		<br/>
-		  <div class="thumbnail">
-			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
-			<div class="caption">
-			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="view/product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-			</div>
-		  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-				<div class="caption">
-				  <h5>Kindle</h5>
-				    <h4 style="text-align:center"><a class="btn" href="view/product_details.php"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-				</div>
-			  </div><br/>
+			
 			<div class="thumbnail">
 				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
 				<div class="caption">
@@ -222,185 +207,37 @@
 			  </div>
 	</div>
 <!-- Sidebar end=============================================== -->
+<!-- Sidebar end=============================================== -->
 		<div class="span9">		
 			<div class="well well-small">
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
 			<div class="row-fluid">
 			<div id="featured" class="carousel slide">
 			<div class="carousel-inner">
+
+
 			  <div class="item active">
 			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/b1.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/b2.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/b3.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/b4.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
+			  	<?php displayFeaturedProducts(); ?>
 			  </ul>
 			  </div>
+
+
 			   <div class="item">
 			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/5.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-				  <i class="tag"></i>
-					<a href="view/product_details.php"><img src="themes/images/products/6.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/7.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/8.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
+				<?php displayFeaturedProducts() ?>
 			  </ul>
 			  </div>
-			   <div class="item">
-			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/9.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/10.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/11.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/1.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
-			  </div>
-			   <div class="item">
-			  <ul class="thumbnails">
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/2.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/3.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					  <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/4.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-				<li class="span3">
-				  <div class="thumbnail">
-					<a href="view/product_details.php"><img src="themes/images/products/5.jpg" alt=""></a>
-					<div class="caption">
-					  <h5>Product name</h5>
-					   <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right">$222.00</span></h4>
-					</div>
-				  </div>
-				</li>
-			  </ul>
-			  </div>
+
 			  </div>
 			  <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
 			  <a class="right carousel-control" href="#featured" data-slide="next">›</a>
 			  </div>
-			  </div>
-		</div>
+			  </div>	  
+			</div>
+
 		<h4>Latest Products </h4>
+		<p style="font-size: 18px" id="cartResponse"></p>
 			  <ul class="thumbnails">
 			  	<?php displayProductsGridView(1); ?>
 			  </ul>	
@@ -448,11 +285,13 @@
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
-	<script src="themes/js/jquery.js" type="text/javascript"></script>
-	<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="themes/js/google-code-prettify/prettify.js"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/ajaxCalls.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	 <script src="bootstrap/js/login.js"></script> 
+	<script src="js/google-code-prettify/prettify.js"></script>
 	
-	<script src="themes/js/bootshop.js"></script>
-    <script src="themes/js/jquery.lightbox-0.5.js"></script>
+	<script src="js/bootshop.js"></script>
+    <script src="js/jquery.lightbox-0.5.js"></script>
 </body>
 </html>

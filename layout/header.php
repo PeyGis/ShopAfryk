@@ -4,9 +4,9 @@
 	<div class="span6">Welcome!<strong> User</strong></div>
 	<div class="span6">
 	<div class="pull-right">
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.php"><span class="">$</span></a>
-		<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<span class="btn btn-mini">$ <?php echo getTotalItemAmountInCart(); ?></span>
+		<a href="product_summary.php"><span class=""></span></a>
+		<a href="product_summary.php"><span class="btn btn-mini btn-warning"><i class="icon-shopping-cart icon-white"></i> [ <?php echo getTotalItemsInCart(); ?> ] Items in your cart </span> </a> 
 	</div>
 	</div>
 </div>
@@ -29,14 +29,14 @@
 			<option>SPORTS & LEISURE </option>
 			<option>BOOKS & ENTERTAINMENTS </option>
 		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
 	 <li class=""><a href="special_offer.php">Specials Offer</a></li>
 	 <li class=""><a href="normal.php">Delivery</a></li>
 	 <li class=""><a href="contact.php">Contact</a></li>
 	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-info">Login</span></a>
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

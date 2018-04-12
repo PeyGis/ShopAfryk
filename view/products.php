@@ -24,21 +24,24 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('../controller/productcontroller.php'); 
-	require_once('../layout/header.php'); 
-
+	<?php require_once('../controller/shoppingCartController.php'); 
+	require_once('../controller/productcontroller.php'); 
+	include_once('../layout/header.php'); 
 	?>
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
 <!-- Sidebar ================================================== -->
-	<?php require_once('../layout/sidebar.php');  ?>
+<?php 
+include_once('../layout/sidebar.php');
+?>
 	<div class="span9">
     <ul class="breadcrumb">
 		<li><a href="../index.php">Home</a> <span class="divider">/</span></li>
-		<li class="active">Products Name</li>
+		<li class="active">Products</li>
     </ul>
-	<h3> Products Name <small class="pull-right"> 40 products are available </small></h3>	
+	<h3> Products Available <small class="pull-right"> <?php echo getProductsCount(); ?> products are available </small></h3>
+		<p style="font-size: 18px" id="cartResponse"></p>	
 	<hr class="soft"/>
 	<hr class="soft"/>
 	<form class="form-horizontal span6">
@@ -70,8 +73,6 @@
 	<hr class="soft"/>
 	</div>
 </div>
-
-	<a href="compair.php" class="btn btn-large pull-right">Compair Product</a>
 	<div class="pagination">
 			<ul>
 			<li><a href="#">&lsaquo;</a></li>
@@ -91,12 +92,13 @@
 <!-- MainBody End ============================= -->
 <!-- Footer ============================================================== -->
 <?php require_once('../layout/footer.php');  ?>
-	<script src="../themes/js/jquery.js" type="text/javascript"></script>
-	<script src="../themes/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../themes/js/google-code-prettify/prettify.js"></script>
+	<script src="../js/jquery.js" type="text/javascript"></script>
+	<script src="../js/ajaxCalls.js" type="text/javascript"></script>
+	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../js/google-code-prettify/prettify.js"></script>
 	
-	<script src="../themes/js/bootshop.js"></script>
-    <script src="../themes/js/jquery.lightbox-0.5.js"></script>
+	<script src="../js/bootshop.js"></script>
+    <script src="../js/jquery.lightbox-0.5.js"></script>
 	
 </body>
 </html>

@@ -126,6 +126,17 @@ function displaySearchProducts($keyword){
 }
 
 
+function getProductsCount(){
+    $obj = new ProductClass();
+    $response = $obj->getProducts();
+    if($response){
+        $row = $obj->getRow();
+        return ($row != null) ? $row : "0";
+    }  else{
+        return "0";
+    }   
+}
+
 function getAllBrands(){
 	$obj = new ProductClass();
 	$result = $obj->getBrands();
@@ -183,7 +194,7 @@ function displayProductsListView(){
                 <img src="'.$prod_image.'" alt="'.$prod_title.'" class="img-responsive"/>
             </div>
             <div class="span4">
-                <h3 style="color: red">New | Available</h3>                
+                <h3 style="color: orange">New | Available</h3>                
                 <hr class="soft"/>
                 <h4>'.$prod_title.'</h4>
                 <p>'.$prod_desc.'</p>
@@ -192,13 +203,11 @@ function displayProductsListView(){
             </div>
             <div class="span3 alignR">
             <form class="form-horizontal qtyFrm">
-            <h3>$'.$prod_price.'</h3>
-            <label class="checkbox">
-                <input type="checkbox">  Adds product to compair
-            </label><br/>
+            <h3><strong>$'.$prod_price.'</strong></h3>
             
-              <a href="product_details.php" class="btn btn-large btn-primary"> Add to <i class=" icon-shopping-cart"></i></a>
-              <a href="product_details.php" class="btn btn-large"><i class="icon-zoom-in"></i></a>
+              <button type= "button" value = "'.$prod_id.'" class="btn btn-info" onclick="addItemToCart(this.value, 1)">Add to <i class="icon-shopping-cart"></i></button>
+
+              <a href="product_details.php" class="btn"><i class="icon-zoom-in"></i></a>
             
                 </form>
             </div>
@@ -232,22 +241,25 @@ function displayProductsGridView($which_ui){
             echo '
             <li class="span3">
               <div class="thumbnail">
-                <a href="product_details.php">
+                <a href="'.$viewPage.'.php">
                 <img src="'.$prod_image.'" alt="'.$prod_title.'" class="img-responsive" style="height: 160px"/>
                 </a>
                 <div class="caption">
-                  <h5>'.$prod_title.'</h5>
-                  <p style="color:red"> 
+                  <h4 style="color:orange; text-align:center">'.$prod_title.'</h4>
+                  <h4 style="text-align:center; margin-top: -15px">$'.$prod_price.'</h4>
+                  <p> 
                     '.substr($prod_desc, 0, 70).'
                   </p>
                    <h4 style="text-align:center">
-                   <a class="btn" href="'.$viewPage.'.php"> 
-                   <i class="icon-zoom-in"></i>
-                   </a> 
-                   <a class="btn" href="#">Add to 
-                   <i class="icon-shopping-cart"></i>
-                   </a> 
-                   <a class="btn btn-primary" href="#">$'.$prod_price.'</a>
+                   <a style="margin-right: 1%" class="btn" href="'.$viewPage.'.php"> 
+                   <i class="icon-zoom-in"></i>View
+                   </a>';
+                   if($which_ui == 1){
+                        echo '<button type= "button" value = "'.$prod_id.'" class="btn btn-info" onclick="addItemToCartIndex(this.value, 1)">Add to <i class="icon-shopping-cart"></i></button>';
+                    } else{
+                        echo '<button type= "button" value = "'.$prod_id.'" class="btn btn-info" onclick="addItemToCart(this.value, 1)">Add to <i class="icon-shopping-cart"></i></button>';
+                        }
+                        echo '
                    </h4>
                 </div>
               </div>
@@ -258,6 +270,32 @@ function displayProductsGridView($which_ui){
     }
 }
 
+function displayFeaturedProducts(){
+    $prod_obj = new ProductClass();
+    $products = $prod_obj->getFeaturedProducts();
+    if($products){
+        while ($product = $prod_obj->fetch()) {
+            $prod_image = substr($product["product_image"], 1);
+            $viewPage = './view/product_details';
+            $prod_id = $product["product_id"];
+            $prod_title = $product["product_title"];
+            $prod_price = $product["product_price"];
+
+            echo '
+                <li class="span3">
+                  <div class="thumbnail">
+                  <i class="tag"></i>
+                    <a href="view/product_details.php"><img src="'.$prod_image.'" alt="'.$prod_title.'"></a>
+                    <div class="caption">
+                      <h5>'.$prod_title.'</h5>
+                      <h4><a class="btn" href="view/product_details.php">VIEW</a> <span class="pull-right" style="color:orange">$'.$prod_price.'</span></h4>
+                    </div>
+                  </div>
+                </li>';
+            }
+
+    }
+}
 function displaySingleProduct($prod_id){
      $prod_obj = new ProductClass();
     $products = $prod_obj->getProductById($prod_id);
