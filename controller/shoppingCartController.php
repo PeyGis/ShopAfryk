@@ -243,4 +243,18 @@ function displayCartProducts(){
             </div>' ;
     }
 }
- ?>
+
+function redirectpay(){
+    $link=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+    if($link){
+        $parts = parse_url($link);
+        parse_str($parts['query'], $query);
+        echo $query['amt'];
+        echo $query['cc'];
+
+    }
+}
+
+
+ ?>}

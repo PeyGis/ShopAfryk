@@ -52,7 +52,7 @@ checkLoginStatus();
 		<div class="span4">
 			<div class="well">
 			<h5>Pay Now</h5>
-			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="paypal">
 
 									  <!-- Identify your business so that you can collect the payments. -->
 									  <input type="hidden" name="business" value="shopafryk2018@gmail.com">
@@ -61,20 +61,35 @@ checkLoginStatus();
 									  <input type="hidden" name="cmd" value="_xclick">
 
 									  <!-- Specify details about the item that buyers will purchase. -->
-									  <input type="hidden" name="item_name" value="Hot Sauce-12oz. Bottle">
-									  <input type="hidden" name="amount" value="5.95">
+									  
+									  <input type="hidden" name="amount" value="<?php echo getTotalItemAmountInCart() ?>">
 									  <input type="hidden" name="currency_code" value="USD">
-									   <input type="hidden" name="quantity" value="2">
-									    <input type="hidden" name="item_number" value="52">
+									   
 
 									  <!-- Display the payment button. -->
 									  <input type="image" name="submit" border="0"
 									  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-									  alt="Buy Now">
+									  alt="Buy Now" name="payb">
 									  <img alt="" border="0" width="1" height="1"
 									  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
 
 									</form>
+									<div><?php 
+									if(isset($_GET['tx'])){
+									    $tx=$_GET['tx'];
+									    $cc=$_GET['cc'];
+									    $amount=$_GET['amt'];
+									    $st=$_GET['st'];
+
+									 
+									    echo $st;
+								
+
+									    
+									}
+
+									?></div>
+
 		</div>
 		</div>
 	</div>	
