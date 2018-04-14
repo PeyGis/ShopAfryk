@@ -1,8 +1,3 @@
-<?php 
-
-//require_once('../controller/userAccountController.php'); 
-?>
-	
 
 <div id="header">
 <div class="container">
@@ -26,16 +21,13 @@
   <div class="navbar-inner">
     <a class="brand" href="../index.php"><img src="../themes/images/logo.png" alt="Bootsshop"/></a>
 		<form class="form-inline navbar-search" method="post" action="products.php" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>African Jewellery </option>
-			<option>African print clothes </option>
-			<option>African Footwear</option>
-			<option>African Toiletry </option>
+		<input id="srchFld" type="text"  name="searchKey" class="srchTxt" />
+<!-- 		  <select class="srchTxt">
+			<option value="none">All</option>
+			<?php //getAllCategories(); ?>
 			
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
+		</select> --> 
+		  <button type="submit" id="submitButton" name="search" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
     <li class=""><a href="contact.php">Contact</a></li>
@@ -47,7 +39,7 @@
 	 <li class="">
 	 	<?php if(isset($_SESSION["user_name"])){ 
 				echo '<a href="logout.php?page=2">Logout</a>';} 
-				else { echo '<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-md btn-info">Login</span></a>';
+				else { echo '<a href="#login" role="button" data-toggle="modal" style="padding-right:0">Login</a>';
 				}
 		?>			 	
 	 </li>

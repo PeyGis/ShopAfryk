@@ -24,7 +24,7 @@ class ProductClass extends Dbconnection
 	}
 
 	function searchProduct($keyword){
-		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' OR product_title LIKE '%$keyword%'";
 		return $this->query($sql);
 	}
 	function getBrands(){

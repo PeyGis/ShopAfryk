@@ -46,20 +46,7 @@ include_once('../layout/sidebar.php');
     </ul>
 	<h3> Products Available <small class="pull-right"> <?php echo getProductsCount(); ?> products are available </small></h3>
 		<p style="font-size: 18px" id="cartResponse"></p>	
-	<hr class="soft"/>
-	<hr class="soft"/>
 				<?php loginstatus() ?>
-	<form class="form-horizontal span6">
-		<div class="control-group">
-		  <label class="control-label alignL">Sort By </label>
-			<select>
-              <option>Priduct name A - Z</option>
-              <option>Priduct name Z - A</option>
-              <option>Priduct Stoke</option>
-              <option>Price Lowest first</option>
-            </select>
-		</div>
-	  </form>
 	  
 <div id="myTab" class="pull-right">
  <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
@@ -68,12 +55,27 @@ include_once('../layout/sidebar.php');
 <br class="clr"/>
 <div class="tab-content">
 	<div class="tab-pane" id="listView">
-		<?php displayProductsListView(); ?>
+		<?php
+			if(isset($_POST["search"])){
+				$keyword = strip_tags($_POST["searchKey"]);
+					displaySearchProductsList($keyword);
+			}  else{
+					displayProductsListView(); 
+				}
+
+		?>
 	</div>
 
 	<div class="tab-pane  active" id="blockView">
 		<ul class="thumbnails">
-			<?php displayProductsGridView(2); ?>
+			<?php
+			if(isset($_POST["search"])){
+				$keyword = strip_tags($_POST["searchKey"]);
+					displaySearchProductsGrid($keyword);
+			}  else{
+					displayProductsGridView(2); 
+				}
+		?>
 		  </ul>
 	<hr class="soft"/>
 	</div>

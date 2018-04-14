@@ -26,6 +26,7 @@
   </head>
 <body>
 	<?php require_once('../settings/security.php');
+	require_once('../controller/productcontroller.php');
 	 require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
