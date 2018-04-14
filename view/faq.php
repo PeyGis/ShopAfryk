@@ -1,3 +1,5 @@
+<?php ob_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,81 +34,16 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-<div id="header">
-<div class="container">
-<div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
-	<div class="span6">
-	<div class="pull-right">
-		<a href="product_summary.php"><span class="">Fr</span></a>
-		<a href="product_summary.php"><span class="">Es</span></a>
-		<span class="btn btn-mini">En</span>
-		<a href="product_summary.php"><span>&pound;</span></a>
-		<span class="btn btn-mini">$155.00</span>
-		<a href="product_summary.php"><span class="">$</span></a>
-		<a href="product_summary.php"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
-	</div>
-	</div>
-</div>
-<!-- Navbar ================================================== -->
-<div id="logoArea" class="navbar">
-<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-</a>
-  <div class="navbar-inner">
-    <a class="brand" href="index.php"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.php" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-    </form>
-    <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.php">Specials Offer</a></li>
-	 <li class=""><a href="normal.php">Delivery</a></li>
-	 <li class=""><a href="contact.php">Contact</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
-	</li>
-    </ul>
-  </div>
-</div>
-</div>
-</div>
+<?php require_once('../controller/shoppingCartController.php'); 
+	require_once('../controller/productcontroller.php'); 
+	require_once('../controller/userAccountController.php'); 
+	include_once('../layout/header.php'); 
+	?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
 <div class="container">
+					<?php loginstatus() ?>
+
 <h1>FAQ</h1>
 <hr class="soften"/>	
 <div class="accordion" id="accordion2">
@@ -193,43 +130,7 @@
 </div>
 <!-- MainBody End ============================= -->
 <!-- Footer ================================================================== -->
-	<div  id="footerSection">
-	<div class="container">
-		<div class="row">
-			<div class="span3">
-				<h5>ACCOUNT</h5>
-				<a href="login.php">YOUR ACCOUNT</a>
-				<a href="login.php">PERSONAL INFORMATION</a> 
-				<a href="login.php">ADDRESSES</a> 
-				<a href="login.php">DISCOUNT</a>  
-				<a href="login.php">ORDER HISTORY</a>
-			 </div>
-			<div class="span3">
-				<h5>INFORMATION</h5>
-				<a href="contact.php">CONTACT</a>  
-				<a href="register.php">REGISTRATION</a>  
-				<a href="legal_notice.php">LEGAL NOTICE</a>  
-				<a href="tac.php">TERMS AND CONDITIONS</a> 
-				<a href="faq.php">FAQ</a>
-			 </div>
-			<div class="span3">
-				<h5>OUR OFFERS</h5>
-				<a href="#">NEW PRODUCTS</a> 
-				<a href="#">TOP SELLERS</a>  
-				<a href="special_offer.php">SPECIAL OFFERS</a>  
-				<a href="#">MANUFACTURERS</a> 
-				<a href="#">SUPPLIERS</a> 
-			 </div>
-			<div id="socialMedia" class="span3 pull-right">
-				<h5>SOCIAL MEDIA </h5>
-				<a href="#"><img width="60" height="60" src="themes/images/facebook.png" title="facebook" alt="facebook"/></a>
-				<a href="#"><img width="60" height="60" src="themes/images/twitter.png" title="twitter" alt="twitter"/></a>
-				<a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube"/></a>
-			 </div> 
-		 </div>
-		<p class="pull-right">&copy; ShopAfryk</p>
-	</div><!-- Container End -->
-	</div>
+	<?php require_once('../layout/footer.php');  ?>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
 	<script src="themes/js/jquery.js" type="text/javascript"></script>
 	<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
