@@ -36,10 +36,10 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_name`) VALUES
-(1, 'Sony'),
-(2, 'Samsang'),
-(3, 'LG'),
-(4, 'Hot Point');
+(1, 'Nyubani Design'),
+(2, 'Kente'),
+(3, 'TawiaDesigns'),
+(4, 'Ilera Apothecar');
 
 -- --------------------------------------------------------
 
@@ -77,11 +77,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_name`) VALUES
-(1, 'Phones'),
-(2, 'Laptops'),
-(3, 'Speakers'),
-(4, 'Television'),
-(7, 'student');
+(1, 'African Jewellery'),
+(2, 'African print clothes'),
+(3, 'African Footwear'),
+(4, 'African Toiletry ');
 
 -- --------------------------------------------------------
 

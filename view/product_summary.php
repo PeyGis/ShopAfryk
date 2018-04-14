@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +26,7 @@
   </head>
 <body>
 	<?php require_once('../controller/shoppingCartController.php'); 
+	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -40,6 +42,7 @@ include_once('../layout/sidebar.php');
 		<li><a href="../index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active"> Shopping Cart</li>
     </ul>
+    <?php loginstatus() ?>
 	<h3>  MY SHOPPING CART [ <small><?php echo getTotalItemsInCart(); ?> Item(s) </small>]<a href="products.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 	<hr class="soft"/>
 	<p id="cartResponse" style="color: red; font-size: 18px"></p>		

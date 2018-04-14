@@ -1,4 +1,4 @@
-﻿
+﻿<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +26,7 @@
   </head>
 <body>
 	<?php require_once('./controller/productcontroller.php'); 
+	require_once('./controller/userAccountController.php');  
 		require_once('./controller/shoppingCartController.php');  ?>
 <div id="header">
 <div class="container">
@@ -37,6 +38,7 @@
 		<a href="view/product_summary.php"><span class="btn btn-mini btn-warning"><i class="icon-shopping-cart icon-white"></i> [<?php echo getTotalItemsInCart(); ?> ] Items in your cart </span> </a> 
 	</div>
 	</div>
+	<?php loginstatusIndex() ?>
 </div>
 <!-- Navbar ================================================== -->
 <div id="logoArea" class="navbar">
@@ -49,18 +51,17 @@
     <a class="brand" href="index.php"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
 		<form class="form-inline navbar-search" method="post" action="view/products.php" >
 		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
+		   <select class="srchTxt">
 			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
+			<option>African Jewellery </option>
+			<option>African print clothes </option>
+			<option>African Footwear</option>
+			<option>African Toiletry </option>	
 		</select> 
 		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.php">Specials Offer</a></li>
+	 <li class=""><a href="view/special_offer.php">Specials Offer</a></li>
 	 <li class=""><a href="view/normal.php">Delivery</a></li>
 	 <li class=""><a href="view/contact.php">Contact</a></li>
 	 <li class="">
@@ -75,16 +76,29 @@
                      <h4 class="modal-title">Login </h4>  
                 </div>  
                 <div class="modal-body">  
-                     <label>Username</label>  
-                     <input type="text" name="username" id="username" class="form-control" />  
-                     <br />  
-                     <label>Password</label>  
-                     <input type="password" name="password" id="password" class="form-control" />  
-                     <br />  
-                     <button type="button" name="login_button" id="login_button" class="btn btn-success">Login</button>  
+               <form method="POST" action="">
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail1">Email</label>
+				<div class="controls">
+				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email" name="email">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<label class="control-label" for="inputPassword1">Password</label>
+				<div class="controls">
+				  <input type="password" class="span3"  id="inputPassword1" placeholder="Password" name="password">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<div class="controls">
+				  <button type="submit" class="btn btn-info" name="login_user">Sign in</button> <a href="./view/forgetpass.php">Forget password?</a>
+				   <a href="./view/register.php">Or Create New Account</a>
+				</div>
+			  </div>
+			</form> 
                 </div>
                 <div class="modal-footer">
-        <button  name="age" id="age" href="register.php" class="btn btn-success" data-dismiss="modal">New User</button>
+       
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
            </div>  
@@ -169,33 +183,39 @@
 	<div id="sidebar" class="span3">
 		<div class="well well-small"><a id="myCart" href="view/product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
-			<li class="subMenu open"><a> ELECTRONICS [230]</a>
+			<li class="subMenu open"><a> JEWELLERY [230]</a>
 				<ul>
-				<li><a class="active" href="view/products.php"><i class="icon-chevron-right"></i>Cameras (100) </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Computers, Tablets & laptop (30)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Mobile Phone (80)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li>
+				<li><a class="active" href="view/products.php"><i class="icon-chevron-right"></i>Women's Jewellery (100) </a></li>
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Jewellery (30)</a></li>
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Jewellery(80)</a></li>
+				<!-- <li><a href="view/products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li> -->
 				</ul>
 			</li>
 			<li class="subMenu"><a> CLOTHES [840] </a>
 			<ul style="display:none">
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Clothing (45)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Shoes (8)</a></li>												
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothing (8)</a></li>												
 				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Hand Bags (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothings  (45)</a></li>											
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Clothings  (45)</a></li>											
 			</ul>
 			</li>
-			<li class="subMenu"><a>FOOD AND BEVERAGES [1000]</a>
+			<li class="subMenu"><a>FOOT WEAR [1000]</a>
 				<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Angoves  (35)</a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Bouchard Aine & Fils (8)</a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>French Rabbit (5)</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Louis Bernard  (45)</a></li>																							
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Shoes (35)</a></li>
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Shoes (8)</a></li>												
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Shoes (5)</a></li>	
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Sporty wear  (45)</a></li>																							
 			</ul>
 			</li>
-			<li><a href="view/products.php">HEALTH & BEAUTY [18]</a></li>
-			<li><a href="view/products.php">SPORTS & LEISURE [58]</a></li>
-			<li><a href="view/products.php">BOOKS & ENTERTAINMENTS [14]</a></li>
+			<li class="subMenu"><a> TOILETRY [840] </a>
+			<ul style="display:none">
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Soaps (45)</a></li>
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Soaps (8)</a></li>												
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Creams (5)</a></li>	
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Soaps  (45)</a></li>
+				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Creams (5)</a></li>												
+			</ul>
+			</li>
 		</ul>
 		<br/>
 			
@@ -281,7 +301,7 @@
 				<a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; AfykShop</p>
+		<p class="pull-right">&copy; ShopAfryk</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->

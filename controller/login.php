@@ -4,7 +4,7 @@
  if(isset($_POST["username"]))  
  {  
       $query = "  
-      SELECT * FROM user  
+      SELECT * FROM users  
       WHERE full_name = '".$_POST["username"]."'  
       AND password = '".md5($_POST["password"])."'  
       ";  

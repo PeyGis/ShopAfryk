@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +26,7 @@
   </head>
 <body>
 	<?php require_once('../controller/shoppingCartController.php'); 
+	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -37,7 +39,7 @@ include_once('../layout/sidebar.php')
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-		<li><a href="index.php">Home</a> <span class="divider">/</span></li>
+		<li><a href="../index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active">Login</li>
     </ul>
 	<h3> Login</h3>	
@@ -65,22 +67,23 @@ include_once('../layout/sidebar.php')
 		<div class="span4">
 			<div class="well">
 			<h5>ALREADY REGISTERED ?</h5>
-			<form>
+			<?php loginstatus() ?>
+			<form method="POST" action="">
 			  <div class="control-group">
 				<label class="control-label" for="inputEmail1">Email</label>
 				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email">
+				  <input class="span3"  type="text" id="inputEmail1" placeholder="Email" name="email">
 				</div>
 			  </div>
 			  <div class="control-group">
 				<label class="control-label" for="inputPassword1">Password</label>
 				<div class="controls">
-				  <input type="password" class="span3"  id="inputPassword1" placeholder="Password">
+				  <input type="password" class="span3"  id="inputPassword1" placeholder="Password" name="password">
 				</div>
 			  </div>
 			  <div class="control-group">
 				<div class="controls">
-				  <button type="submit" class="btn">Sign in</button> <a href="forgetpass.php">Forget password?</a>
+				  <button type="submit" class="btn btn-info" name="login_user">Sign in</button> <a href="forgetpass.php">Forget password?</a>
 				</div>
 			  </div>
 			</form>

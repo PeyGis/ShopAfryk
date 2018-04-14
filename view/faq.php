@@ -227,7 +227,7 @@
 				<a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; Bootshop</p>
+		<p class="pull-right">&copy; ShopAfryk</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->

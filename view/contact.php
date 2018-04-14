@@ -38,10 +38,10 @@
 		<h4>Contact Details</h4>
 		<p>	18 Fresno,<br/> CA 93727, USA
 			<br/><br/>
-			info@bootsshop.com<br/>
-			﻿Tel 123-456-6780<br/>
-			Fax 123-456-5679<br/>
-			web:bootsshop.com
+			shopafryk.000webhostapp.com<br/>
+			﻿Tel +233-26-6782340<br/>
+			Fax +2543-772-5679234<br/>
+			web:shopafryk.000webhostapp.com
 		</p>		
 		</div>
 			
@@ -128,7 +128,7 @@
 				<a href="#"><img width="60" height="60" src="../themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; AfykShop</p>
+		<p class="pull-right">&copy; ShopAfryk</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->

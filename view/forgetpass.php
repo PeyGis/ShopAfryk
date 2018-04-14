@@ -70,7 +70,7 @@
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.php">Specials Offer</a></li>
+	 <li class=""><a href="special_offer.php">Special Offers</a></li>
 	 <li class=""><a href="normal.php">Delivery</a></li>
 	 <li class=""><a href="contact.php">Contact</a></li>
 	 <li class="">
@@ -181,7 +181,7 @@ include_once('../layout.php')
 				<a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; Bootshop</p>
+		<p class="pull-right">&copy; ShopAfryk</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->

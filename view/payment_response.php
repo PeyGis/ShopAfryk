@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +26,7 @@
   </head>
 <body>
 	<?php require_once('../controller/shoppingCartController.php'); 
+	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -40,7 +42,7 @@ include_once('../layout/sidebar.php')
 		<li><a href="index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active">Payment</li>
     </ul>
-	
+	<?php loginstatus() ?>
 	<div class="row">
 		
 		<div class="span1"> &nbsp;</div>

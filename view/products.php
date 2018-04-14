@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +27,7 @@
 <body>
 	<?php require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/productcontroller.php'); 
+	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); 
 	?>
 <div id="mainBody">
@@ -44,6 +46,7 @@ include_once('../layout/sidebar.php');
 		<p style="font-size: 18px" id="cartResponse"></p>	
 	<hr class="soft"/>
 	<hr class="soft"/>
+				<?php loginstatus() ?>
 	<form class="form-horizontal span6">
 		<div class="control-group">
 		  <label class="control-label alignL">Sort By </label>

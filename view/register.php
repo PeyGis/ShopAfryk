@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php ob_start(); ?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -26,6 +27,7 @@
 
 <body>
 <?php require_once('../controller/shoppingCartController.php'); 
+require_once('../controller/userAccountController.php'); 
 include_once('../layout/header.php') ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -42,22 +44,22 @@ include_once('../layout/sidebar.php');
     </ul>
   <h3> Registration</h3>  
   <div class="well">
-   
-  <form action="../controller/register.php" method="post" name="myForm" onsubmit="return validate();" > 
+   <?php registrationstatus(); ?>
+  <form action="" method="post" name="myForm" onsubmit="return validate();" > 
                   <br />
                   <label>Your Name</label>  
-                  <input type="text" name="name" id="name" placeholder="Full name" class="form-control" />  
+                  <input type="text" name="user_name" id="name" placeholder="Full name" class="form-control" />  
                   <br/>
                   <span id="name_error" class="text-warning"></span>  
                   <br />   
                   <label>Email address</label>
-                  <input type="email" class="form-control" id="email"  name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="email" class="form-control" id="email"  name="user_email" aria-describedby="emailHelp" placeholder="Enter email">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   <br/>
                   <span id="email_error" class="text-warning"></span>
                   <br/>  
                   <label>Password</label>
-                  <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                  <input type="password" name="user_password" class="form-control" id="password" placeholder="Password">
                   <br/>
                   <label>Confirm Password</label>
                   <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Password">
@@ -75,7 +77,7 @@ include_once('../layout/sidebar.php');
                   <br/>
                   <span id="dob_error" class="text-warning"></span>  
                   <br />
-                  <input type="submit" value="Register" class="btn btn-success"/> 
+                  <input type="submit" name="register" value="Register" class="btn btn-success"/> 
                   <br/>
                   <span id="success_message" class="text-success"></span>  
                   <br/>
