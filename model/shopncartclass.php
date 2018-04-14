@@ -43,6 +43,12 @@ class ShoppingCart extends Dbconnection
 		return $this->query($sql);
 	}
 
+	function deletecart($ip_address){
+		$sql="DELETE FROM cart WHERE ip_add='$ip_address'";
+		return $this->query($sql);
+
+	}
+
 } 
 
 

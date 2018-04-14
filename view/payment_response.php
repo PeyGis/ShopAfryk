@@ -29,6 +29,7 @@
 	require_once('../controller/productcontroller.php');
 	 require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
+		require_once('../controller/paymentController.php');
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -45,7 +46,7 @@ checkLoginStatus();
 		<li><a href="index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active">Payment</li>
     </ul>
-	<?php loginstatus() ?>
+	<?php loginstatus();?>
 	<div class="row">
 		
 		<div class="span1"> &nbsp;</div>
@@ -76,33 +77,29 @@ checkLoginStatus();
 									</form>
 									<div><?php 
 									if(isset($_GET['tx'])){
+
 									    $tx=$_GET['tx'];
 									    $cc=$_GET['cc'];
 									    $amount=$_GET['amt'];
 									    $st=$_GET['st'];
+									    	
+									    if($st=='Completed'){
+									    	$response = insertOrder($st);
+									    	if($response){
+									    	$payRes = insertPayment($amount, $cc);
+									    	if($payRes){
+									    		deletecart();
+									    	} 
+									    	} 
 
-									 
-									    echo $st;
-									    
-									    $connect = mysqli_connect("localhost", "root", "", "shopafryk"); 
-
-									    public function insertorders(){
-									    	$invoice=mt_rand();
-									    	$order_date=date("Y/m/d");
-									    	$sql="INSERT INTO order ( customer_id, invoice_number,order_date,status) VALUES ('$_SESSION['user_id']','$invoice', '$order_date','$st' )";
-									    	$result = mysqli_query($connect, $sql);
+									    	
+									    	
+									    } else{
+									    	echo "sorry we couldnt process your transaction";
 									    }
-
-									    public function insertpayment(){
-									    	$pay_date=date("Y/m/d");
-									    	$sql="INSERT INTO payment (amt,customer_id,currency,payment_date) VALUES ('$amount','$_SESSION['user_id']','$cc','$$pay_date')";
-									    	$result=mysqli_query($connect,$sql);
-
-									    }
-								
-
 									    
 									}
+									
 
 									?></div>
 
