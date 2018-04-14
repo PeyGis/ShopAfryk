@@ -83,6 +83,22 @@ checkLoginStatus();
 
 									 
 									    echo $st;
+									    
+									    $connect = mysqli_connect("localhost", "root", "", "shopafryk"); 
+
+									    public function insertorders(){
+									    	$invoice=mt_rand();
+									    	$order_date=date("Y/m/d");
+									    	$sql="INSERT INTO order ( customer_id, invoice_number,order_date,status) VALUES ('$_SESSION['user_id']','$invoice', '$order_date','$st' )";
+									    	$result = mysqli_query($connect, $sql);
+									    }
+
+									    public function insertpayment(){
+									    	$pay_date=date("Y/m/d");
+									    	$sql="INSERT INTO payment (amt,customer_id,currency,payment_date) VALUES ('$amount','$_SESSION['user_id']','$cc','$$pay_date')";
+									    	$result=mysqli_query($connect,$sql);
+
+									    }
 								
 
 									    
