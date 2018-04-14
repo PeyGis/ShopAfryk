@@ -25,7 +25,8 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('../controller/shoppingCartController.php'); 
+	<?php require_once('../settings/security.php');
+	require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
@@ -46,25 +47,7 @@ include_once('../layout/sidebar.php')
 	<hr class="soft"/>
 	
 	<div class="row">
-		<div class="span4">
-			<div class="well">
-			<h5>CREATE YOUR ACCOUNT</h5><br/>
-			Enter your e-mail address to create an account.<br/><br/><br/>
-			<form action="register.php">
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail0">E-mail address</label>
-				<div class="controls">
-				  <input class="span3"  type="text" id="inputEmail0" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="controls">
-			  <button type="submit" class="btn block">Create Your Account</button>
-			  </div>
-			</form>
-		</div>
-		</div>
-		<div class="span1"> &nbsp;</div>
-		<div class="span4">
+				<div class="span4">
 			<div class="well">
 			<h5>ALREADY REGISTERED ?</h5>
 			<?php loginstatus() ?>
@@ -89,6 +72,25 @@ include_once('../layout/sidebar.php')
 			</form>
 		</div>
 		</div>
+		<div class="span1"> &nbsp;</div>
+		<div class="span4">
+			<div class="well">
+			<h5>CREATE YOUR ACCOUNT</h5><br/>
+			Enter your e-mail address to create an account.<br/><br/><br/>
+			<form action="register.php">
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail0">E-mail address</label>
+				<div class="controls">
+				  <input class="span3"  type="text" id="inputEmail0" placeholder="Email">
+				</div>
+			  </div>
+			  <div class="controls">
+			  <button type="submit" class="btn block">Create Your Account</button>
+			  </div>
+			</form>
+		</div>
+		</div>
+		
 	</div>	
 	
 </div>

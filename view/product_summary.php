@@ -25,7 +25,8 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('../controller/shoppingCartController.php'); 
+	<?php require_once('../settings/security.php');
+	require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
@@ -55,9 +56,6 @@ include_once('../layout/sidebar.php');
 		}
 
 		?>
-					
-	<a href="products.php" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-	<a href="payment_response.php" class="btn btn-large btn-warning pull-right">Checkout <i class="icon-arrow-right"></i></a>
 	
 </div>
 </div></div>

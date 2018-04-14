@@ -120,7 +120,7 @@ function loginUser($email, $pswd){
             $row = $user_obj->fetch();
             // verify password with the one saved in db
                 if (password_verify($pswd, $row['password'])){
-                    session_start();
+                    //session_start();
                     $_SESSION["user_name"] = $row['full_name'];
                     $_SESSION["user_id"] = $row['user_id'];
                     $_SESSION["user_email"] = $row['email'];
@@ -163,7 +163,8 @@ function loginUser($email, $pswd){
         header("Refresh:1; URL=../index.php");
     }
     else if (!empty($GLOBALS['login_status']) && $GLOBALS['login_status'] == 2) {
-        echo "<center><h5 style='color:red'> Incorrect Password</h5></center>"; 
+        echo "<center><h5 style='color:red'> Incorrect Password</h5></center>";
+                header("Refresh:1"); 
     }
     else if (!empty($GLOBALS['login_status']) && $GLOBALS['login_status'] == 3) {
         echo "<center><h5 style='color:red'> Email does not exist Kindly provide valid email </h5></center>" ;

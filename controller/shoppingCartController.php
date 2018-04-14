@@ -228,14 +228,17 @@ function displayCartProducts(){
                 </tr>
                 
                 </tbody>
-                </table>';
+                </table>
+                <a href="products.php" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+                <a href="payment_response.php" class="btn btn-large btn-warning pull-right">Checkout <i class="icon-arrow-right"></i></a>';
+
     } else{
         echo '<div class="thumbnail">
                <h3 style="text-align:center; margin:10px">Oops! it seems you dont have any product in cart</h3>
                 <p style="text-align:center; margin:10px">Try adding one</p>
-                <img src="image/sorry.jpg" alt="No Prouct Added to Cart" class="img-responsive">
+                <img src="../themes/images/sorry.jpg" alt="No Prouct Added to Cart" class="img-responsive">
                     <p style="text-align:center; margin:10px"> 
-                    <a href="index.php" class="btn btn-warning">Back to Home</a>
+                    <a href="./products.php" class="btn btn-warning">Back to Home</a>
                     </p>
             </div>' ;
     }

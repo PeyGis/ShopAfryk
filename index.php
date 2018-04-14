@@ -25,13 +25,14 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('./controller/productcontroller.php'); 
+	<?php require_once('./settings/security.php');
+	require_once('./controller/productcontroller.php'); 
 	require_once('./controller/userAccountController.php');  
 		require_once('./controller/shoppingCartController.php');  ?>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> Our Estimed Customer</strong></div>
+	<div class="span6">Welcome!</div>
 	<div class="span6">
 	<div class="pull-right">
 		<span class="btn btn-mini">$ <?php echo getTotalItemAmountInCart(); ?></span>
@@ -61,11 +62,20 @@
 		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="view/special_offer.php">Specials Offer</a></li>
-	 <li class=""><a href="view/normal.php">Delivery</a></li>
 	 <li class=""><a href="view/contact.php">Contact</a></li>
 	 <li class="">
-	 <a href="#view/login" role="button" data-toggle="modal" data-target="#loginModal" style="padding-right:0"><span class="btn btn-large btn-info">Login</span></a>
+	 <?php if(!isset($_SESSION["user_name"])){ 
+				echo '<a href="view/register.php">Sign Up</a>';} 
+	 ?>	
+	</li>
+	 <li class="">
+	 	<?php if(isset($_SESSION["user_name"])){ 
+				echo '<a href="view/logout.php?page=1">Logout</a>';} 
+				else { echo '<a href="#loginModal" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-md btn-info">Login</span></a>';
+				}
+		?>			 	
+	 </li>
+	 	 <li class=""><a href="#"><?php echo getUserName(); ?></a></li>
 	
 	<div id="loginModal" class="modal fade" role="dialog">  
       <div class="modal-dialog">  
@@ -181,7 +191,7 @@
 <!-- Sidebar ================================================== -->
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="view/product_summary.php"><img src="themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="view/product_summary.php"><img src="themes/images/ico-cart.png" alt="cart"><?php echo getTotalItemsInCart(); ?> Items in your cart  <span class="badge badge-warning pull-right">$<?php echo getTotalItemAmountInCart(); ?></span></a></div>
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> JEWELLERY [230]</a>
 				<ul>

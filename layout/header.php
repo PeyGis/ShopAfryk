@@ -7,7 +7,7 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	<div class="span6">Welcome!</div>
 	<div class="span6">
 	<div class="pull-right">
 		<span class="btn btn-mini">$ <?php echo getTotalItemAmountInCart(); ?></span>
@@ -38,11 +38,21 @@
 		  <button type="submit" id="submitButton" class="btn btn-info">Go</button>
     </form>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.php">Special Offers</a></li>
-	 <li class=""><a href="normal.php">Delivery</a></li>
-	 <li class=""><a href="contact.php">Contact</a></li>
+    <li class=""><a href="contact.php">Contact</a></li>
+    <li class="">
+	 <?php if(!isset($_SESSION["user_name"])){ 
+				echo '<a href="./register.php">Sign Up</a>';} 
+	 ?>	
+	</li>
 	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-info">Login</span></a>
+	 	<?php if(isset($_SESSION["user_name"])){ 
+				echo '<a href="logout.php?page=2">Logout</a>';} 
+				else { echo '<a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-md btn-info">Login</span></a>';
+				}
+		?>			 	
+	 </li>
+	 	 <li class=""><a href="#"><?php echo getUserName(); ?></a></li>
+	 <li class="">
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

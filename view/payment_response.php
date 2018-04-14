@@ -25,7 +25,8 @@
 	<style type="text/css" id="enject"></style>
   </head>
 <body>
-	<?php require_once('../controller/shoppingCartController.php'); 
+	<?php require_once('../settings/security.php');
+	 require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
@@ -34,7 +35,8 @@
 	<div class="row">
 <!-- Sidebar ================================================== -->
 <?php 
-include_once('../layout/sidebar.php')
+include_once('../layout/sidebar.php');
+checkLoginStatus();
 ?>
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
