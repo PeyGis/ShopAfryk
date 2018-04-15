@@ -29,7 +29,6 @@
 	require_once('../controller/productcontroller.php');
 	 require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
-		require_once('../controller/paymentController.php');
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -60,14 +59,16 @@ checkLoginStatus();
 		    	
 		    if($st=='Completed'){
 		    	echo '<div class="jumbotron">
-				  <h3 style="color:green">Your transaction has been processed successfully </h3>
-				  <p>You will be emailed at '.$_SESSION['user_email'].' with details of your payment</p>
+				  <h3 style="color:green">Your transaction is been processed</h3>
+				  <p>You will be emailed at '.$_SESSION['user_email'].' with details of the transaction</p>
 				</div>'	;
-		    	$response = insertOrder($st);
+				 $invoice=mt_rand();
+		    	$response = insertOrder($st, $invoice);
 		    	if($response){
 		    	$payRes = insertPayment($amount, $cc);
 		    	if($payRes){
-		    		deletecart();
+		    		sendEmail($_SESSION['user_email'], $invoice, $amount);
+		    		deleteCart();
 		    	} 
 		    	} 
 		    	

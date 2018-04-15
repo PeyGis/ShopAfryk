@@ -135,7 +135,7 @@ function addItemToCartIndex(prod_id, qty){
             if (jsonResponse[0].status == 'success'){
                document.getElementById("cartResponse").style.color = 'green';
                document.getElementById("cartResponse").innerHTML = " " + jsonResponse[0].message;
-               window.setTimeout(function(){location.reload()},5000);
+               window.setTimeout(function(){location.reload()},1500);
             } else if (jsonResponse[0].status == 'failed'){
               document.getElementById("cartResponse").style.color = 'red';
               document.getElementById("cartResponse").innerHTML = " " + jsonResponse[0].message;

@@ -7,7 +7,6 @@ require_once((dirname(__FILE__)).'/../model/paymentclass.php');
 	$obj=new Paymentclass();
 	$orderResponse=$obj->insertorders($user_id,$invoice, $st);
 	return $orderResponse;
-
 	}
 
 	function insertPayment($amount,$cc){
