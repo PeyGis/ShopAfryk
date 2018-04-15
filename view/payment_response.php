@@ -29,6 +29,7 @@
 	require_once('../controller/productcontroller.php');
 	 require_once('../controller/shoppingCartController.php'); 
 	require_once('../controller/userAccountController.php'); 
+		require_once('../controller/paymentController.php');
 	include_once('../layout/header.php'); ?>
 <!-- Header End====================================================================== -->
 <div id="mainBody">
@@ -45,28 +46,49 @@ checkLoginStatus();
 		<li><a href="index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active">Payment</li>
     </ul>
-	<?php loginstatus() ?>
+	<?php loginstatus();?>
+
 	<div class="row">
-		<div class="span1"> &nbsp;</div>
+		<div class="span2"></div>
 		<div class="span8">
 		<?php 
 		if(isset($_GET['tx'])){
-		    // $tx=$_GET['tx'];
-		    // $cc=$_GET['cc'];
-		    // $amount=$_GET['amt'];
-		    // $st=$_GET['st'];
-					 
-			echo '<div class="jumbotron">
-			  <h3 style="color:green">Your transaction has been processed successfully</h3>
-			  <p> You will be emailed a recepient email at '.$_SESSION["user_email"].' with the details of the transaction</p>
-			</div>';					    
+		    $tx=$_GET['tx'];
+		    $cc=$_GET['cc'];
+		    $amount=$_GET['amt'];
+		    $st=$_GET['st'];
+		    	
+		    if($st=='Completed'){
+		    	echo '<div class="jumbotron">
+				  <h3 style="color:green">Your transaction has been processed successfully </h3>
+				  <p>You will be emailed at '.$_SESSION['user_email'].' with details of your payment</p>
+				</div>'	;
+		    	$response = insertOrder($st);
+		    	if($response){
+		    	$payRes = insertPayment($amount, $cc);
+		    	if($payRes){
+		    		deletecart();
+		    	} 
+		    	} 
+		    	
+		    } else{
+		    	echo '<div class="jumbotron">
+				  <h3 style="color:red">Sorry your transaction wasnt successful</h3>
+				  <p>please ensure you have sufficient balance in your PayPal account or have entered the correct login details</p>
+				</div>'	;
+		    }
+		    
 		}
+		
 		?>
+			
 		</div>
-		<div class="span1"> &nbsp;</div>
+		<div class="span2"></div>
+		
 	</div>
 	<div class="row">
-		<div class="span2"> &nbsp;</div>
+		
+		<div class="span1"> &nbsp;</div>
 		<div class="span4">
 			<div class="well">
 			<h5 style="text-align: center;">Pay Now</h5>
@@ -83,18 +105,16 @@ checkLoginStatus();
 			  <input type="hidden" name="amount" value="<?php echo getTotalItemAmountInCart() ?>">
 			  <input type="hidden" name="currency_code" value="USD">
 			   
-
-			  <!-- Display the payment button. -->
 			  <center>
-			  	<input type="image" name="submit" border="0"
+			  <!-- Display the payment button. -->
+			  <input type="image" name="submit" border="0"
 			  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
 			  alt="Buy Now" name="payb">
 			  <img alt="" border="0" width="1" height="1"
 			  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-			  </center>
-			  
-
+			 </center>
 			</form>
+
 		</div>
 		</div>
 	</div>	

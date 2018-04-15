@@ -180,7 +180,15 @@ function get_client_ip() {
 }
 
 
+    function deletecart(){
+        $ip_address=get_client_ip();
+        $obj=new ShoppingCart();
+        $del=$obj->deletecart($ip_address);
+    }
+
+
 function displayCartProducts(){
+
     $ip_add = get_client_ip();
     $cartObj = new ShoppingCart();
     $cartProducts = $cartObj->getCartItems($ip_add);
@@ -241,18 +249,6 @@ function displayCartProducts(){
                     <a href="./products.php" class="btn btn-warning">Back to Home</a>
                     </p>
             </div>' ;
-    }
-}
-
-function redirectpay(){
-    $link=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-    if($link){
-        $parts = parse_url($link);
-        parse_str($parts['query'], $query);
-        echo $query['amt'];
-        echo $query['cc'];
-
     }
 }
 
