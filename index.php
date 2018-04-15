@@ -192,35 +192,35 @@
 		<ul id="sideManu" class="nav nav-tabs nav-stacked">
 			<li class="subMenu open"><a> JEWELLERY</a>
 				<ul>
-				<li><a class="active" href="view/products.php"><i class="icon-chevron-right"></i>Women's Jewellery </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Jewellery </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kids Jewellery</a></li>
+				<li><a class="active" href="view/products.php?category=1"><i class="icon-chevron-right"></i>Women's Jewellery </a></li>
+				<li><a href="view/products.php?category=1"><i class="icon-chevron-right"></i>Men's Jewellery </a></li>
+				<li><a href="view/products.php?category=1"><i class="icon-chevron-right"></i>Kids Jewellery</a></li>
 				<!-- <li><a href="view/products.php"><i class="icon-chevron-right"></i>Sound & Vision (15)</a></li> -->
 				</ul>
 			</li>
 			<li class="subMenu"><a> CLOTHES  </a>
 			<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Clothing </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Clothing </a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Hand Bags </a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Clothings  </a></li>											
+				<li><a href="view/products.php?category=2"><i class="icon-chevron-right"></i>Women's Clothing </a></li>
+				<li><a href="view/products.php?category=2"><i class="icon-chevron-right"></i>Men's Clothing </a></li>												
+				<li><a href="view/products.php?category=2"><i class="icon-chevron-right"></i>Women's Hand Bags </a></li>	
+				<li><a href="view/products.php?category=2"><i class="icon-chevron-right"></i>Kid's Clothings  </a></li>											
 			</ul>
 			</li>
 			<li class="subMenu"><a>FOOT WEAR </a>
 				<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Shoes </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Shoes </a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Shoes</a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Sporty wear </a></li>																							
+				<li><a href="view/products.php?category=3"><i class="icon-chevron-right"></i>Women's Shoes </a></li>
+				<li><a href="view/products.php?category=3"><i class="icon-chevron-right"></i>Men's Shoes </a></li>												
+				<li><a href="view/products.php?category=3"><i class="icon-chevron-right"></i>Kid's Shoes</a></li>	
+				<li><a href="view/products.php?category=3"><i class="icon-chevron-right"></i>Sporty wear </a></li>																							
 			</ul>
 			</li>
 			<li class="subMenu"><a> TOILETRY </a>
 			<ul style="display:none">
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Soaps </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Soaps </a></li>												
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Women's Creams </a></li>	
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Kid's Soaps  </a></li>
-				<li><a href="view/products.php"><i class="icon-chevron-right"></i>Men's Creams </a></li>												
+				<li><a href="view/products.php?category=4"><i class="icon-chevron-right"></i>Women's Soaps </a></li>
+				<li><a href="view/products.php?category=4"><i class="icon-chevron-right"></i>Men's Soaps </a></li>												
+				<li><a href="view/products.php?category=4"><i class="icon-chevron-right"></i>Women's Creams </a></li>	
+				<li><a href="view/products.php?category=4"><i class="icon-chevron-right"></i>Kid's Soaps  </a></li>
+				<li><a href="view/products.php?category=4"><i class="icon-chevron-right"></i>Men's Creams </a></li>												
 			</ul>
 			</li>
 		</ul>
@@ -266,7 +266,7 @@
 		<h4>Latest Products </h4>
 		<p style="font-size: 18px" id="cartResponse"></p>
 			  <ul class="thumbnails">
-			  	<?php displayProductsGridView(1); ?>
+			  	<?php displayProductsGridView(1, 'normal'); ?>
 			  </ul>	
 
 		</div>

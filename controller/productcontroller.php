@@ -237,9 +237,14 @@ function uploadProduct($product_cat, $product_brand, $product_title, $product_pr
 }
 
 
-function displayProductsListView(){
+function displayProductsListView($search_type){
     $prod_obj = new ProductClass();
+    if($search_type != "normal"){
+    $products = $prod_obj->getProductsByCategory($search_type);
+    } else{
     $products = $prod_obj->getProducts();
+    }
+
     if($products){
         while ($product = $prod_obj->fetch()) {
             $prod_id = $product["product_id"];
@@ -247,7 +252,6 @@ function displayProductsListView(){
             $prod_title = $product["product_title"];
             $prod_price = $product["product_price"];
             $prod_desc = $product["product_desc"];
-            $old_price = $prod_price + (0.2 * $prod_price);
 
             echo '
             <div class="row">     
@@ -277,12 +281,36 @@ function displayProductsListView(){
 
             ';
         }
+    }else{
+        if($which_ui == 1){
+        echo '<div class="thumbnail">
+               <h3 style="text-align:center">Oops! your search did not match any product</h3>
+                <p style="text-align:center;">Try again...</p>
+                <img src="./themes/images/sorry.jpg" alt="No Prouct Available At This Time" class="img-responsive">
+                    <p style="text-align:center; margin:10px"> 
+                    <a href="products.php" class="btn btn-warning">Back to Home</a>
+                    </p>
+            </div>' ;
+      }   else{
+        echo '<div class="thumbnail">
+               <h3 style="text-align:center">Oops! your search did not match any product</h3>
+                <p style="text-align:center;">Try again...</p>
+                <img src="../themes/images/sorry.jpg" alt="No Prouct Available At This Time" class="img-responsive">
+                    <p style="text-align:center; margin:10px"> 
+                    <a href="products.php" class="btn btn-warning">Back to Home</a>
+                    </p>
+            </div>' ;
     }
+   }
 }
 
-function displayProductsGridView($which_ui){
+function displayProductsGridView($which_ui, $search_type){
     $prod_obj = new ProductClass();
+    if($search_type != "normal"){
+    $products = $prod_obj->getProductsByCategory($search_type);
+    } else{
     $products = $prod_obj->getProducts();
+    }
     if($products){
         while ($product = $prod_obj->fetch()) {
             if($which_ui == 1){
@@ -328,8 +356,29 @@ function displayProductsGridView($which_ui){
 
             ';
         }
+    } else{
+        if($which_ui == 1){
+        echo '<div class="thumbnail">
+               <h3 style="text-align:center">Oops! your search did not match any product</h3>
+                <p style="text-align:center;">Try again...</p>
+                <img src="./themes/images/sorry.jpg" alt="No Prouct Available At This Time" class="img-responsive">
+                    <p style="text-align:center; margin:10px"> 
+                    <a href="products.php" class="btn btn-warning">Back to Home</a>
+                    </p>
+            </div>' ;
+      }   else{
+        echo '<div class="thumbnail">
+               <h3 style="text-align:center">Oops! your search did not match any product</h3>
+                <p style="text-align:center;">Try again...</p>
+                <img src="../themes/images/sorry.jpg" alt="No Prouct Available At This Time" class="img-responsive">
+                    <p style="text-align:center; margin:10px"> 
+                    <a href="products.php" class="btn btn-warning">Back to Home</a>
+                    </p>
+            </div>' ;
     }
-}
+   }
+ }
+
 
 function displayFeaturedProducts(){
     $prod_obj = new ProductClass();
