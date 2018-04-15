@@ -59,6 +59,46 @@ function getTotalItemAmountInCart(){
     }  
 }
 
+function insertOrder($status, $invoice){
+    $toReturn = false;
+    $ip_add = get_client_ip();
+    $user_id=$_SESSION['user_id'];
+    $cartObj = new ShoppingCart();
+    $cartProducts = $cartObj->getCartItems($ip_add);
+    if($cartProducts){
+        $cartItems = $cartObj->fetchall();
+
+        foreach ($cartItems as $item =>$value) {
+            $prod_id = $value[0];
+            $qty = $value[10];
+            $toReturn = $cartObj->insertorders($user_id, $prod_id, $qty, $invoice, $status);
+        }
+    } 
+   return $toReturn;
+}
+function insertPayment($amount,$cc){
+$user_id=$_SESSION['user_id'];
+$cartObj = new ShoppingCart();
+$payStatus=$cartObj->insertpayment($amount,$user_id,$cc);
+return $payStatus;
+}
+
+function sendEmail($email, $invoice, $amount){
+    $body = '<p>Hi '.$_SESSION['user_name'].'\n 
+    Thank you for shopping with ShopAfryk. Please find below your transaction details:</p>
+    <p> Transaction Id:'.$invoice.'\n
+        Date: '.date('Y-m-d').'\n
+        Total Price: '.$amount.'
+    </p>';
+    $subject = 'ShopAfryk Transaction Details';
+    $header = 'from: customerservice@shopafryk.com';
+
+    if (mail($email, $subject, $body, $header)){
+        //echo " mail sent";
+    } else{
+        //echo "failed";
+    }
+}
 //function to add item to cart
 function addItemToCart($prod_id, $qty){
     $toReturn = array();
@@ -180,7 +220,14 @@ function get_client_ip() {
 }
 
 
+function deleteCart(){
+    $ip_address=get_client_ip();
+    $obj=new ShoppingCart();
+    $del=$obj->deletecart($ip_address);
+}
+
 function displayCartProducts(){
+
     $ip_add = get_client_ip();
     $cartObj = new ShoppingCart();
     $cartProducts = $cartObj->getCartItems($ip_add);
@@ -244,17 +291,5 @@ function displayCartProducts(){
     }
 }
 
-function redirectpay(){
-    $link=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-    if($link){
-        $parts = parse_url($link);
-        parse_str($parts['query'], $query);
-        echo $query['amt'];
-        echo $query['cc'];
-
-    }
-}
-
-
- ?>}
+ ?>

@@ -50,7 +50,7 @@ include_once('../layout/sidebar.php');
 	  
 <div id="myTab" class="pull-right">
  <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
- <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+ <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-info"><i class="icon-th-large"></i></span></a>
 </div>
 <br class="clr"/>
 <div class="tab-content">
@@ -58,10 +58,14 @@ include_once('../layout/sidebar.php');
 		<?php
 			if(isset($_POST["search"])){
 				$keyword = strip_tags($_POST["searchKey"]);
-					displaySearchProductsList($keyword);
-			}  else{
-					displayProductsListView(); 
-				}
+				displaySearchProductsList($keyword);
+			} 
+			if(isset($_GET["category"])){
+				$cat_id = $_GET["category"];
+				displayProductsListView($cat_id);
+			}else{
+				displayProductsListView('normal'); 
+			}
 
 		?>
 	</div>
@@ -72,9 +76,12 @@ include_once('../layout/sidebar.php');
 			if(isset($_POST["search"])){
 				$keyword = strip_tags($_POST["searchKey"]);
 					displaySearchProductsGrid($keyword);
-			}  else{
-					displayProductsGridView(2); 
-				}
+			} if(isset($_GET["category"])){
+				$cat_id = $_GET["category"];
+				displayProductsGridView(2, $cat_id);
+			} else{
+				displayProductsGridView(2, 'normal'); 
+			}
 		?>
 		  </ul>
 	<hr class="soft"/>

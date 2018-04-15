@@ -45,50 +45,76 @@ checkLoginStatus();
 		<li><a href="index.php">Home</a> <span class="divider">/</span></li>
 		<li class="active">Payment</li>
     </ul>
-	<?php loginstatus() ?>
+	<?php loginstatus();?>
+
+	<div class="row">
+		<div class="span2"></div>
+		<div class="span8">
+		<?php 
+		if(isset($_GET['tx'])){
+		    $tx=$_GET['tx'];
+		    $cc=$_GET['cc'];
+		    $amount=$_GET['amt'];
+		    $st=$_GET['st'];
+		    	
+		    if($st=='Completed'){
+		    	echo '<div class="jumbotron">
+				  <h3 style="color:green">Your transaction is been processed</h3>
+				  <p>You will be emailed at '.$_SESSION['user_email'].' with details of the transaction</p>
+				</div>'	;
+				 $invoice=mt_rand();
+		    	$response = insertOrder($st, $invoice);
+		    	if($response){
+		    	$payRes = insertPayment($amount, $cc);
+		    	if($payRes){
+		    		sendEmail($_SESSION['user_email'], $invoice, $amount);
+		    		deleteCart();
+		    	} 
+		    	} 
+		    	
+		    } else{
+		    	echo '<div class="jumbotron">
+				  <h3 style="color:red">Sorry your transaction wasnt successful</h3>
+				  <p>please ensure you have sufficient balance in your PayPal account or have entered the correct login details</p>
+				</div>'	;
+		    }
+		    
+		}
+		
+		?>
+			
+		</div>
+		<div class="span2"></div>
+		
+	</div>
 	<div class="row">
 		
 		<div class="span1"> &nbsp;</div>
 		<div class="span4">
 			<div class="well">
-			<h5>Pay Now</h5>
+			<h5 style="text-align: center;">Pay Now</h5>
 			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" name="paypal">
 
-									  <!-- Identify your business so that you can collect the payments. -->
-									  <input type="hidden" name="business" value="shopafryk2018@gmail.com">
+			  <!-- Identify your business so that you can collect the payments. -->
+			  <input type="hidden" name="business" value="shopafryk2018@gmail.com">
 
-									  <!-- Specify a Buy Now button. -->
-									  <input type="hidden" name="cmd" value="_xclick">
+			  <!-- Specify a Buy Now button. -->
+			  <input type="hidden" name="cmd" value="_xclick">
 
-									  <!-- Specify details about the item that buyers will purchase. -->
-									  
-									  <input type="hidden" name="amount" value="<?php echo getTotalItemAmountInCart() ?>">
-									  <input type="hidden" name="currency_code" value="USD">
-									   
-
-									  <!-- Display the payment button. -->
-									  <input type="image" name="submit" border="0"
-									  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-									  alt="Buy Now" name="payb">
-									  <img alt="" border="0" width="1" height="1"
-									  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-
-									</form>
-									<div><?php 
-									if(isset($_GET['tx'])){
-									    $tx=$_GET['tx'];
-									    $cc=$_GET['cc'];
-									    $amount=$_GET['amt'];
-									    $st=$_GET['st'];
-
-									 
-									    echo $st;
-								
-
-									    
-									}
-
-									?></div>
+			  <!-- Specify details about the item that buyers will purchase. -->
+			  
+			  <input type="hidden" name="amount" value="<?php echo getTotalItemAmountInCart() ?>">
+			  <input type="hidden" name="currency_code" value="USD">
+			   
+			  <center>
+			  <!-- Display the payment button. -->
+			  <input type="image" name="submit" border="0"
+			  src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+			  alt="Buy Now" name="payb">
+			  <img alt="" border="0" width="1" height="1"
+			  src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+			 </center>
+			</form>
 
 		</div>
 		</div>

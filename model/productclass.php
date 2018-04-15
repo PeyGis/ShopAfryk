@@ -22,6 +22,10 @@ class ProductClass extends Dbconnection
 		$sql = "SELECT * FROM products WHERE product_id = '$prod_id'";
 		return $this->query($sql);
 	}
+	function getProductsByCategory($cat_id){
+		$sql = "SELECT * FROM products WHERE product_cat = '$cat_id'";
+		return $this->query($sql);
+	}
 
 	function searchProduct($keyword){
 		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%' OR product_title LIKE '%$keyword%'";
@@ -49,6 +53,7 @@ class ProductClass extends Dbconnection
 } 
 
 
-// $obj = new ProductClass();
+//$obj = new ProductClass();
 // var_dump($obj->addProduct("2", "1", "Samsung S6", "2500", "new phone", '/image/sj-1.png', "phones"));
+//var_dump($obj->getProductsByCategory(2));
  ?>
